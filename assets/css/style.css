@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+}
+
+body{
+    margin: 0px;
+    text-align: center;
+    border: solid 1px blue;
+    background: url("../images/joel-filipe-science.jpg");
+    
+}
+
+.container-main{
+    max-width: 980px;
+    max-height: 100%;
+    margin: auto;
+    border: solid 1px orange;
+    background-color: mediumblue;   
+    
+}
+
+.header{
+    border: solid 2px powderblue;
+    padding-top: 50px;
+    padding-bottom: 120px;
+    background-image: url("../images/header_logo_TBBT.jpg");
+}
+ .heading{
+    background-color:midnightblue;
+ }
+
+.heading, .timer{
+    margin: auto;
+    border: solid 1px mediumblue;
+    font-style: oblique;
+    color: white;
+}
+
+.big{
+    font-size: 100px;
+    z-index: 1900;
+    color: white;
+}
+
+footer{
+    margin: 30px 0 0 0;
+    padding:20px;
+    background-color: midnightblue;
+    font-style: oblique;
+    color: white;
+}
+
+#ques{
+    border-radius: 5px;
+    background-color: white;
+    height: 80px;
+    margin: 15px;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+  
+}
