@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>The Big Bang Theory Trivia Game!!!</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+
+<body>
+	<div>
+		<!--This contains the entire page-->
+		<div class="container-main">
+			<!--This contains the header-->
+			<div class="header"></div>
+			<div class="row heading">
+				<div class="col-xs-11 col-sm-12 col-md-12">
+					<h1>The Big Bang Theory...
+						<small class="text-muted">Trivia!!!</small>
+					</h1>
+
+				</div>
+			</div>
+
+			<div>
+				<i class="fas fa-play big"></i>
+			</div>
+
+			<div id="checkAns"></div>
+
+			<!--Countdown timer for each question-->
+			<div class="timer">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 offset-md-7">
+						<h3>10 seconds</h3>
+					</div>
+				</div>
+			</div>
+
+			<!--Displays single question-->
+			<div class="question">
+				<div class="row" id="ques">
+					<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12">Q1</div>
+				</div>
+
+				<!--Displays multiple answer choices-->
+				<div>
+					<div class="row">
+						<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12">
+							<!--Buttons for answer choices-->
+							<button type="button" class="btn btn-warning btn-lg btn-block" id="A1">A1</button>
+							<button type="button" class="btn btn-warning btn-lg btn-block" id="A2">A2</button>
+							<button type="button" class="btn btn-warning btn-lg btn-block" id="A3">A3</button>
+							<button type="button" class="btn btn-warning btn-lg btn-block" id="A4">A4</button>
+						</div>
+					</div>
+
+				</div>
+
+				<footer>
+					<div class="row stats">
+						<div class="col-md-6 col-sm-6 col-xs-6" id="correct">Correct Answers: </div>
+						<div class="col-md-6 col-sm-6 col-xs-6" id="incorrect">Incorrect Answers: </div>
+					</div>
+				</footer>
+
+
+			</div>
+
+		</div>
+	</div>
+	</div>
+
+
+	</div>
+	</div>
+
+	<!--JQuery-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!--Script-->
+	<script src="./assets/javascript/app.js"></script>
+</body>
+
+</html>
