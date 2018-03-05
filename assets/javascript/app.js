@@ -1,23 +1,22 @@
 //var array for storing questions and answers
-var questions = [{
-        Q1: "Whose visit from Nebraska prompts Penny to ask Leonard to lie about them getting back together?",
-        a1: "Her Father’s",
-        a2: "Her Brother’s",
+var questionsArr = [{
+        Q: "Whose visit from Nebraska prompts Penny to ask Leonard to lie about them getting back together?",
+        A1: "Her Father’s",
+        A2: "Her Brother’s",
         A3: "Her Mother’s",
         A4: "Her cousin’s",
         ans: "Her Father's"
     },
     {
-        Q2: "What is Stuart's self-proclaimed 'dream job' that he lands after the comic store burns down due to a 'hot plate incident'?",
+        Q: "What is Stuart's self-proclaimed 'dream job' that he lands after the comic store burns down due to a 'hot plate incident'?",
         A1: "Dressing up Goofy at Disneyland",
         A2: "Mrs. Wolowitz’s caregiver",
         A3: "Cartoonist for Marvel",
         A4: "A Bartender",
         ans: "Mrs. Wolowitz's caregiver"
     },
-
     {
-        Q3: "What is Sheldon's nickname for his grandmother?",
+        Q: "What is Sheldon's nickname for his grandmother?",
         A1: "Meemaw",
         A2: "Moonpie",
         A3: "Granny",
@@ -25,7 +24,7 @@ var questions = [{
         ans: "Meemaw"
     },
     {
-        Q4: "Which band wrote the theme song for the show?",
+        Q: "Which band wrote the theme song for the show?",
         A1: "The Beatles",
         A2: "Backstreet Boys",
         A3: "Barenaked Ladies",
@@ -33,16 +32,15 @@ var questions = [{
         ans: "Barenaked Ladies"
     },
     {
-        Q5: "Which state is Penny originally from?",
+        Q: "Which state is Penny originally from?",
         A1: "California",
         A2: "New Jersey",
         A3: "Nebraska",
         A4: "Montonna",
         ans: "Nebraska"
     },
-
     {
-        Q6: "What is Howard allergic to?",
+        Q: "What is Howard allergic to?",
 
         A1: "Shellfish",
         A2: "Blueberries",
@@ -50,9 +48,8 @@ var questions = [{
         A4: "Eggs",
         ans: "Nuts"
     },
-
     {
-        Q7: "'While my brother was getting an STD, I was getting a Ph:D: Penicillin can't take this away:' Who said it ?",
+        Q: "'While my brother was getting an STD, I was getting a Ph:D: Penicillin can't take this away:' Who said it ?",
 
         A1: "Sheldon",
         A2: "Amy",
@@ -60,9 +57,8 @@ var questions = [{
         A4: "Leonard",
         ans: "Sheldon"
     },
-
     {
-        Q8: "Finish Penny's quote: 'So that means, you're a doctor, you 're a doctor, you're a doctor, you 're a doctor and, Howard, you ________________:",
+        Q: "Finish Penny's quote: 'So that means, you're a doctor, you 're a doctor, you're a doctor, you 're a doctor and, Howard, you ________________:",
         A1: "Know a lot of Doctors",
         A2: "Should leave",
         A3: "Should try and become one",
@@ -71,7 +67,7 @@ var questions = [{
     },
 
     {
-        Q9: "'You better watch that attitude, buddy: You're dating the popular girl now:' Who said it ?",
+        Q: "'You better watch that attitude, buddy: You're dating the popular girl now:' Who said it ?",
 
         A1: "Amy",
         A2: "Bernadette",
@@ -81,7 +77,7 @@ var questions = [{
     },
 
     {
-        Q10: " Who said it: 'Our babies will be smart and beautiful:'",
+        Q: " Who said it: 'Our babies will be smart and beautiful:'",
         A1: "Penny",
         A2: "Bernadette",
         A3: "Amy",
@@ -90,7 +86,7 @@ var questions = [{
     },
 
     {
-        Q11: "What is Sheldon’ s favorite number ?",
+        Q: "What is Sheldon’ s favorite number ?",
 
         A1: "0",
         A2: "43",
@@ -100,7 +96,7 @@ var questions = [{
     },
 
     {
-        Q12: "Where did Amy go to college ?",
+        Q: "Where did Amy go to college ?",
         A1: "Harvard University",
         A2: "MIT",
         A3: "Princeton University",
@@ -109,7 +105,7 @@ var questions = [{
     },
 
     {
-        Q13: "Despite wanting his astronaut nickname to be 'Rocket Man', what nickname does Howard actually end up with ?",
+        Q: "Despite wanting his astronaut nickname to be 'Rocket Man', what nickname does Howard actually end up with ?",
         A1: "Buzz",
         A2: "Fruit Loops",
         A3: "Space Cowboy",
@@ -118,7 +114,7 @@ var questions = [{
     },
 
     {
-        Q14: "Who accompanies Leonard to Switzerland on his and Penny 's first Valentine's Day ?",
+        Q: "Who accompanies Leonard to Switzerland on his and Penny 's first Valentine's Day ?",
         A1: "Penny",
         A2: "Howard",
         A3: "Sheldon",
@@ -127,7 +123,7 @@ var questions = [{
     },
 
     {
-        Q15: "Who accompanies Sheldon and Amy on their first dinner date ?",
+        Q: "Who accompanies Sheldon and Amy on their first dinner date ?",
         A1: "Leonard",
         A2: "Penny",
         A3: "Raj",
@@ -136,7 +132,7 @@ var questions = [{
     },
 
     {
-        Q16: "What song does Sheldon require his caretakers sing to him when he is sick ?",
+        Q: "What song does Sheldon require his caretakers sing to him when he is sick ?",
 
         A1: "Baa Baa Black Sheep",
         A2: "Wheels on the Bus Go",
@@ -146,7 +142,7 @@ var questions = [{
     },
 
     {
-        Q17: "Finish this game title: 'Rock, paper, scissors, lizard, ______'",
+        Q: "Finish this game title: 'Rock, paper, scissors, lizard, ______'",
 
         A1: "Kirk",
         A2: "Spock",
@@ -155,7 +151,7 @@ var questions = [{
         ans: "Spock"
     },
     {
-        Q18: "Where did Sheldon grow up ?",
+        Q: "Where did Sheldon grow up ?",
         A1: "East Texas",
         A2: "West Texas",
         A3: "Louisiana",
@@ -164,7 +160,7 @@ var questions = [{
     },
 
     {
-        Q19: "Why did Sheldon miss the opportunity to meet Stan Lee at the comic book store ?",
+        Q: "Why did Sheldon miss the opportunity to meet Stan Lee at the comic book store ?",
         A1: "He was in Jail",
         A2: "He was sleeping",
         A3: "He had to work",
@@ -173,7 +169,7 @@ var questions = [{
     },
 
     {
-        Q20: "How many times does Sheldon have to knock on a door and say someone 's name?",
+        Q: "How many times does Sheldon have to knock on a door and say someone 's name?",
         A1: "It changes every time",
         A2: "One time",
         A3: "Two times",
@@ -183,24 +179,60 @@ var questions = [{
     }
 ];
 
+//var for incrementing question number
+var count = 0;
+
 //var for storing player answer
+var ansChosen = '';
+
 //var game running set to false
+var gameIsRunning = false;
+
 //var for set timer for answering each question
-//variable for time interval between questions
-//variable to count correct answers 
+var displayQues;
+
+//variable to count correct answers
+var correctAns = 0; 
+
 //variable to count incorrect answers
+var incorrectAns = 0;
 
 //DOM reference to the picked question
+var quesHTML = document.getElementById('ques');
+
 //DOM reference to answer choices
+var A1HTML = document.getElementById('A1');
+var A2HTML = document.getElementById('A2');
+var A3HTML = document.getElementById('A3');
+var A4HTML = document.getElementById('A4');
+
 //DOM reference to showing time for answering each question
+var displayQuesHTML = document.getElementsByClassName("timer");
+
 //DOM reference to show correct/incorrect/time out messages
+var checkAnsHTML = document.getElementById('checkAns');
+
 //DOM reference to correct answers
+var correctHTML = document.getElementById('correct');
 //DOM reference to incorrect answers
+var incorrectHTML = document.getElementById('incorrect');
 
 //When document is ready
+
+
 //show play button
-//when play is clicked: rewrite stats, pick a random question, set game running to true
+
+//when play is clicked: rewrite stats, pick a question, set game running to true
+//$("#play").on("click", startTrivia);
+
 //write picked question and respective answer choices to the DOM, set the timer running write the timer to DOM
+$("#ques").html(questionsArr[count].Q);
+console.log(questionsArr[count].Q);
+
+$("#A1").html(questionsArr[count].A1);
+$("#A2").html(questionsArr[count].A2);
+$("#A3").html(questionsArr[count].A3);
+$("#A4").html(questionsArr[count].A4);
 //if the player did not answer the question with in 10 sec, show timeout and game running false
 //store the player anwer to a variable, stop the timer, set game running to false
 //check is player answer is same as the correct answer
