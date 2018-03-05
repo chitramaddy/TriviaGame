@@ -180,7 +180,7 @@ var questionsArr = [{
 ];
 
 //var for incrementing question number
-var x = 0;
+var count= 0;
 
 //var for storing player answer
 var ansChosen = '';
@@ -198,24 +198,24 @@ var correctAns = 0;
 var incorrectAns = 0;
 
 //DOM reference to the picked question
-var quesHTML = document.getElementById('ques');
+var quesHTML = $('#ques');
 
 //DOM reference to answer choices
-var A1HTML = document.getElementById('A1');
-var A2HTML = document.getElementById('A2');
-var A3HTML = document.getElementById('A3');
-var A4HTML = document.getElementById('A4');
+var A1HTML = $('#A1');
+var A2HTML = $('#A2');
+var A3HTML = $('#A3');
+var A4HTML = $('#A4');
 
 //DOM reference to showing time for answering each question
-var displayQuesHTML = document.getElementsByClassName("timer");
+var displayQuesHTML = $(".timer");
 
 //DOM reference to show correct/incorrect/time out messages
-var checkAnsHTML = document.getElementById('checkAns');
+var checkAnsHTML = $('#checkAns');
 
 //DOM reference to correct answers
-var correctHTML = document.getElementById('correct');
+var correctHTML = $('#correct');
 //DOM reference to incorrect answers
-var incorrectHTML = document.getElementById('incorrect');
+var incorrectHTML = $('#incorrect');
 
 
 
