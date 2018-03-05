@@ -231,6 +231,7 @@ $(document).ready(function () {
         incorrectAns = 0;
         gameIsRunning = true;
         console.log(count);
+        startTrivia();
 
         function test() {
             console.log(test);
@@ -240,7 +241,6 @@ $(document).ready(function () {
 
         function startTrivia() {
 
-            console.log("I am here");
             $("#ques").text(questionsArr[count].Q);
             console.log(questionsArr[count].Q);
 
@@ -249,7 +249,7 @@ $(document).ready(function () {
             $("#A3").text(questionsArr[count].A3);
             $("#A4").text(questionsArr[count].A4);
 
-            displayQues = setInterval(nextQues, 1000 * 10);
+            displayQues = setInterval(evalAns, 1000 * 10);
             $(".timer").text(displayQues);
         }
 
@@ -277,7 +277,7 @@ $(document).ready(function () {
                 else if (ansChosen === '') {
                     $("#checkAns").text("Timeout:-(");
                 }
-                nextQues();
+                //nextQues();
             });
         }
         //show the next question
