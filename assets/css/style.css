@@ -60,3 +60,9 @@ footer{
     color: black;
   
 }
+
+#checkAns{
+    width: 50%;
+    height: 50%;
+    border: blue;
+}

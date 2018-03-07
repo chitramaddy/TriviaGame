@@ -231,13 +231,14 @@ $(document).ready(function () {
         incorrectAns = 0;
         gameIsRunning = true;
         console.log(count);
+        
+        //Setting the game to run by calling the function which displays the question and answers
         startTrivia();
 
-        function test() {
-            console.log(test);
-        }
-
-        //write picked question and respective answer choices to the DOM, set the timer running write the timer to DOM
+        //A question is displayed for 10 seconds. then the function next question is called to increment the count.
+        displayQues = setInterval(nextQues, 1000 * 10);
+        
+        //write picked question and respective answer choices to the DOM. 
 
         function startTrivia() {
 
@@ -249,52 +250,56 @@ $(document).ready(function () {
             $("#A3").text(questionsArr[count].A3);
             $("#A4").text(questionsArr[count].A4);
 
-            displayQues = setInterval(evalAns, 1000 * 10);
-            $(".timer").text(displayQues);
         }
 
-
-        //store the player answer to a variable, stop the timer, set game running to false
-        function evalAns() {
-            $(".btn").on("click", function () {
-                ansChosen = ($this).text;
-                clearInterval(displayQues);
-                gameIsRunning = false;
-
-                //check is player answer is same as the correct answer. if yes, show correct answer message.increment correct answer variable, write it to the DOM
-                if (ansChosen === (questionsArr[count].ans)) {
-                    correctAns++;
-                    $("#correct").text("Correct answers: " + correctAns);
-                    $("#checkAns").text("YUP!!!");
-
-                } //if not, show the incorrect answer message with correct answer. increment incorrect answer variable and write it to the DOM
-                else if (ansChosen !== (questionArr[count].ans)) {
-                    incorrectAns++;
-                    $("#incorrect").text("Incorrect answers: " + incorrectAns);
-                    $("#checkAns").text("Nah!!!" + (questionArr[count].ans));
-
-                } //if the player did not answer the question with in 10 sec, show timeout 
-                else if (ansChosen === '') {
-                    $("#checkAns").text("Timeout:-(");
-                }
-                //nextQues();
-            });
-        }
         //show the next question
         function nextQues() {
             count++;
-            //set the time to show correct/incorrect/timeoout message to 1 sec
-            setTimeout(evalAns, 1000);
+            startTrivia();
 
         }
-        //At the end of the array, show the stats, set game running to false, empty div and show the play button.
-        if (count === 20) {
-            $("#checkAns").text("Correct: " + correctAns + " " + "Incorrect: " + incorrectAns);
+
+        //store the player answer to a variable, stop the timer, set game running to false
+        function evalAns() {
+
+            ansChosen = $(this).text();
+            clearInterval(displayQues);
             gameIsRunning = false;
-            $(".btn").show(this);
-            $("#correct").empty();
-            $("#incorrect").empty();
+
+            //check if player answer is same as the correct answer. if yes, show correct answer message.increment correct answer variable, write it to the DOM
+            if (ansChosen === (questionsArr[count].ans)) {
+                correctAns++;
+                $("#correct").text("Correct answers: " + correctAns);
+                $("#checkAns").text("YUP!!!");
+
+            } //if not, show the incorrect answer message with correct answer. increment incorrect answer variable and write it to the DOM
+            else if (ansChosen !== (questionsArr[count].ans)) {
+                incorrectAns++;
+                $("#incorrect").text("Incorrect answers: " + incorrectAns);
+                $("#checkAns").text("Nah!!!" + (questionsArr[count].ans));
+
+            } //if the player did not answer the question with in 10 sec, show timeout 
+            else if (ansChosen === '') {
+                $("#checkAns").text("Timeout:-(");
+            }
+            
+
         }
+
+        //set the time to show correct/incorrect/timeoout message to 1 sec
+
+
+        //setTimeout(startTrivia, 1000);
 
     });
+    //At the end of the array, show the stats, set game running to false, empty div and show the play button.
+    if (count === 20) {
+        $("#checkAns").text("Correct: " + correctAns + " " + "Incorrect: " + incorrectAns);
+        gameIsRunning = false;
+        $(".btn").show(this);
+        $("#correct").empty();
+        $("#incorrect").empty();
+    }
+
 });
+
