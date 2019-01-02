@@ -201,8 +201,8 @@ var gameIsRunning = false;
 //var for set timer for answering each question
 var displayQues;
 
-//var for timeout if not answer is chosen
-var timeOut;
+//var for time if not answer is chosen
+var time;
 
 //variable to count correct answers
 var correctAns = 0;
@@ -210,40 +210,15 @@ var correctAns = 0;
 //variable to count incorrect answers
 var incorrectAns = 0;
 
-//DOM reference to the picked question
-var quesHTML = $("#ques");
-
-//DOM reference to answer choices
-var A1HTML = $("#A1");
-var A2HTML = $("#A2");
-var A3HTML = $("#A3");
-var A4HTML = $("#A4");
-
-// //DOM reference to showing time for answering each question
-// var displayQuesHTML = $(".timer");
-
-//DOM reference to show TimeOut if the question is not answered within 10 sec
-var timeOutHTML = $("#timeOut");
-
-//DOM reference to show correct/incorrect/time out messages
-var checkAnsHTML = $("#checkAns");
-
-//DOM reference to correct answers
-var correctHTML = $("#correct");
-//DOM reference to incorrect answers
-var incorrectHTML = $("#incorrect");
-
 //When document is ready
 $(document).ready(function() {
   $(".big").on("click", function() {
     //hide play button
-    $(".big").hide(this);
+    $(".big").hide();
 
     //when play is clicked: rewrite stats, pick a question, set game running to true
     correctAns = 0;
     incorrectAns = 0;
-    gameIsRunning = true;
-    console.log(count);
 
     //Setting the game to run by calling the function which displays the question and answers
     startTrivia();
@@ -251,8 +226,8 @@ $(document).ready(function() {
     //write picked question and respective answer choices to the DOM.
 
     function startTrivia() {
+      gameIsRunning = true;
       $("#ques").text(questionsArr[count].Q);
-      console.log(questionsArr[count].Q);
 
       $("#A1").text(questionsArr[count].A1);
       $("#A2").text(questionsArr[count].A2);
@@ -260,55 +235,18 @@ $(document).ready(function() {
       $("#A4").text(questionsArr[count].A4);
 
       //A question is displayed for 10 seconds. then the function next question is called to increment the count.
-      displayQues = setInterval(nextQues, 1000 * 10);
+      displayQues = setInterval(nextQues, 1000 * 1);
     }
 
     //show the next question
     function nextQues() {
-      // // If player does not pick an answer choice in 10 sec, time up message will appear and then next question will be displayed.
-      // timeOut = setTimeout(timeUp, 1000 * 10);
-      // console.log(timeUp());
-
-      // function timeUp() {
-      //     $("#timeOut").text("You did not choose an answer");
-
-      // }
       clearInterval(displayQues);
       count++;
-      startTrivia();
-    }
-
-    $(".choice").on("click", function() {
-      var choice = $(this).text();
-
-      // ansChosen = button.text();
-      console.log(choice);
-      clearInterval(displayQues);
-      gameIsRunning = false;
-
-      //check if player answer is same as the correct answer. if yes, show correct answer message.increment correct answer variable, write it to the DOM
-      console.log(questionsArr[count].ans);
-      if (choice === questionsArr[count].ans) {
-        correctAns++;
-        $("#correct").text("Correct answers: " + correctAns);
-        $("#checkAns").text("YUP!!!");
-      } //if not, show the incorrect answer message with correct answer. increment incorrect answer variable and write it to the DOM
-      else if (choice !== questionsArr[count].ans) {
-        incorrectAns++;
-        $("#incorrect").text("Incorrect answers: " + incorrectAns);
-        $("#checkAns").text("Nah!!!" + questionsArr[count].ans);
+      if (count === 20) {
+        gameIsRunning = false;
+        count = 0;
       }
-    });
-
-    //At the end of the array, show the stats, set game running to false, empty div and show the play button.
-    if (count === 20) {
-      $("#checkAns").text(
-        "Correct: " + correctAns + " " + "Incorrect: " + incorrectAns
-      );
-      gameIsRunning = false;
-      $(".big").show(this);
-      $("#correct").empty();
-      $("#incorrect").empty();
+      startTrivia();
     }
   });
 });

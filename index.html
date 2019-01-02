@@ -27,10 +27,11 @@
 			</div>
 
 			<div>
-				<span class="big"><i class="fas fa-play" id="play" ></i></span>
+				<div class="big"><i class="fas fa-play" id="play"></i></div>
 			</div>
 
 			<div id="checkAns"></div>
+			<div id="timeOut"></div>
 
 			<!--Countdown timer for each question-->
 			<div class="timer">
@@ -44,7 +45,7 @@
 			<!--Displays single question-->
 			<div class="question">
 				<div class="row" id="ques">
-					<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12">Q1</div>
+					<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12"></div>
 				</div>
 
 				<!--Displays multiple answer choices-->
@@ -52,10 +53,10 @@
 					<div class="row">
 						<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12">
 							<!--Buttons for answer choices-->
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A1">A1</button>
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A2">A2</button>
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A3">A3</button>
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A4">A4</button>
+							<button type="button" class="btn btn-warning btn-lg btn-block choice" id="A1"></button>
+							<button type="button" class="btn btn-warning btn-lg btn-block choice" id="A2"></button>
+							<button type="button" class="btn btn-warning btn-lg btn-block choice" id="A3"></button>
+							<button type="button" class="btn btn-warning btn-lg btn-block choice" id="A4"></button>
 						</div>
 					</div>
 
@@ -80,13 +81,13 @@
 	</div>
 
 	<!--JQuery-->
-	
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 	<!--Script-->
-	<script src="./assets/javascript/app.js"></script>
+	<script src="./assets/javascript/logic.js"></script>
 </body>
 
 </html>
