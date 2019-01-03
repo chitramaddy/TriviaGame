@@ -199,10 +199,12 @@ var ansChosen = "";
 var gameIsRunning = false;
 
 //var for set timer for answering each question
-var displayQues;
+var quesInterval;
 
-//var for time if not answer is chosen
-var time;
+var countDown;
+
+//var for displaying time countdown
+var time = 0;
 
 //variable to count correct answers
 var correctAns = 0;
@@ -219,34 +221,59 @@ $(document).ready(function() {
     //when play is clicked: rewrite stats, pick a question, set game running to true
     correctAns = 0;
     incorrectAns = 0;
+    count = 0;
+    time = 5;
+
+    gameIsRunning = true;
 
     //Setting the game to run by calling the function which displays the question and answers
-    startTrivia();
+    showQues();
 
     //write picked question and respective answer choices to the DOM.
+    function showQues() {
+      if (gameIsRunning) {
+        clearInterval(countDown);
+        time = 6;
+        $("#ques").text(questionsArr[count].Q);
 
-    function startTrivia() {
-      gameIsRunning = true;
-      $("#ques").text(questionsArr[count].Q);
+        $("#A1").text(questionsArr[count].A1);
+        $("#A2").text(questionsArr[count].A2);
+        $("#A3").text(questionsArr[count].A3);
+        $("#A4").text(questionsArr[count].A4);
 
-      $("#A1").text(questionsArr[count].A1);
-      $("#A2").text(questionsArr[count].A2);
-      $("#A3").text(questionsArr[count].A3);
-      $("#A4").text(questionsArr[count].A4);
+        //Countdown that calls the function to show the seconds remaining to answer
+        countDown = setInterval(timeRemaining, 1000 * 1);
 
-      //A question is displayed for 10 seconds. then the function next question is called to increment the count.
-      displayQues = setInterval(nextQues, 1000 * 1);
+        //A question is displayed for 10 seconds. then the function next question is called to increment the count.
+        quesInterval = setInterval(nextQues, 1000 * 5);
+      }
     }
 
-    //show the next question
-    function nextQues() {
-      clearInterval(displayQues);
-      count++;
-      if (count === 20) {
-        gameIsRunning = false;
-        count = 0;
+    //to Show the seconds remaining to pick an answer choice
+    function timeRemaining() {
+      if (gameIsRunning) {
+        time--;
+        $("#time").text(time);
       }
-      startTrivia();
+    }
+
+    //show the next question upto the last question in the array
+    function nextQues() {
+      clearInterval(quesInterval);
+      count++;
+      if (count <= 19) {
+        showQues();
+      } else {
+        gameIsRunning = false;
+        clearInterval(timeRemaining);
+        $("#ques").empty();
+
+        $("#A1").empty();
+        $("#A2").empty();
+        $("#A3").empty();
+        $("#A4").empty();
+        $(".big").show();
+      }
     }
   });
 });
