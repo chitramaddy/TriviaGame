@@ -222,7 +222,7 @@ $(document).ready(function() {
     correctAns = 0;
     incorrectAns = 0;
     count = 0;
-    time = 5;
+    // time = 5;
 
     gameIsRunning = true;
 
@@ -233,7 +233,7 @@ $(document).ready(function() {
     function showQues() {
       if (gameIsRunning) {
         clearInterval(countDown);
-        time = 6;
+        time = 5;
         $("#ques").text(questionsArr[count].Q);
 
         $("#A1").text(questionsArr[count].A1);
@@ -253,7 +253,12 @@ $(document).ready(function() {
     function timeRemaining() {
       if (gameIsRunning) {
         time--;
-        $("#time").text(time);
+        $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+
+        if (time === 0) {
+          clearInterval(countDown);
+          $("#time").text("Time Out:-(");
+        }
       }
     }
 
@@ -261,8 +266,9 @@ $(document).ready(function() {
     function nextQues() {
       clearInterval(quesInterval);
       count++;
+
       if (count <= 19) {
-        showQues();
+        setTimeout(showQues, 2000);
       } else {
         gameIsRunning = false;
         clearInterval(timeRemaining);
