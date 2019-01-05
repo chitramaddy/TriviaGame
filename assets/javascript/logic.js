@@ -206,6 +206,9 @@ var countDown;
 //var for displaying time countdown
 var time = 0;
 
+//variable
+var isAnswered;
+
 //variable to count correct answers
 var correctAns = 0;
 
@@ -214,7 +217,10 @@ var incorrectAns = 0;
 
 //When document is ready
 $(document).ready(function() {
-  $(".big").on("click", function() {
+  $(".big").click(timers);
+  $(".btn").click(playTrivia);
+
+  function timers() {
     //hide play button
     $(".big").hide();
 
@@ -222,8 +228,6 @@ $(document).ready(function() {
     correctAns = 0;
     incorrectAns = 0;
     count = 0;
-    // time = 5;
-
     gameIsRunning = true;
 
     //Setting the game to run by calling the function which displays the question and answers
@@ -234,6 +238,7 @@ $(document).ready(function() {
       if (gameIsRunning) {
         clearInterval(countDown);
         time = 5;
+        isAnswered = false;
         $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
 
         $("#ques").text(questionsArr[count].Q);
@@ -253,7 +258,7 @@ $(document).ready(function() {
 
     //to Show the seconds remaining to pick an answer choice
     function timeRemaining() {
-      if (gameIsRunning) {
+      if (gameIsRunning && count <= 19) {
         time--;
         $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
 
@@ -273,15 +278,41 @@ $(document).ready(function() {
         setTimeout(showQues, 1000);
       } else {
         gameIsRunning = false;
-        clearInterval(timeRemaining);
-        $("#ques").empty();
+        clearInterval(countDown);
+        $("#time").text("");
 
-        $("#A1").empty();
-        $("#A2").empty();
-        $("#A3").empty();
-        $("#A4").empty();
+        $("#ques").text("");
+
+        $("#A1").text("");
+        $("#A2").text("");
+        $("#A3").text("");
+        $("#A4").text("");
+
         $(".big").show();
       }
     }
-  });
+  }
+
+  function playTrivia() {
+    if (!isAnswered) {
+      var ansChosen = $(this).text();
+      isAnswered = true;
+      clearInterval(countDown);
+
+      console.log(ansChosen);
+      var x = questionsArr[count].ans;
+      console.log(x);
+
+      function checkAns() {
+        if (ansChosen === x) {
+          correctAns++;
+          $("#correct").text("Correct Answers: " + correctAns);
+        } else {
+          incorrectAns++;
+          $("#incorrect").text("Incorrect Answers: " + incorrectAns);
+        }
+      }
+      checkAns();
+    }
+  }
 });
