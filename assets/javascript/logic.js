@@ -234,6 +234,8 @@ $(document).ready(function() {
       if (gameIsRunning) {
         clearInterval(countDown);
         time = 5;
+        $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+
         $("#ques").text(questionsArr[count].Q);
 
         $("#A1").text(questionsArr[count].A1);
@@ -268,7 +270,7 @@ $(document).ready(function() {
       count++;
 
       if (count <= 19) {
-        setTimeout(showQues, 2000);
+        setTimeout(showQues, 1000);
       } else {
         gameIsRunning = false;
         clearInterval(timeRemaining);
