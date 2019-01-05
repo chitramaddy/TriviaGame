@@ -223,6 +223,8 @@ $(document).ready(function() {
   function timers() {
     //hide play button
     $(".big").hide();
+    $("#correct").text("Correct Answers: 0");
+    $("#incorrect").text("Incorrect Answers: 0");
 
     //when play is clicked: rewrite stats, pick a question, set game running to true
     correctAns = 0;
