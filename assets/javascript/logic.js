@@ -206,7 +206,7 @@ var countDown;
 //var for displaying time countdown
 var time = 0;
 
-//variable
+//variable when set to true, will prevent user from changing answer
 var isAnswered;
 
 //variable to count correct answers
@@ -217,12 +217,12 @@ var incorrectAns = 0;
 
 //When document is ready
 $(document).ready(function() {
-  $(".big").click(timers);
+  $("#play").click(timers);
   $(".btn").click(playTrivia);
 
   function timers() {
     //hide play button
-    $(".big").hide();
+    $("#play").hide();
     $("#correct").text("Correct Answers: 0");
     $("#incorrect").text("Incorrect Answers: 0");
 
@@ -234,72 +234,74 @@ $(document).ready(function() {
 
     //Setting the game to run by calling the function which displays the question and answers
     showQues();
+  }
 
-    //write picked question and respective answer choices to the DOM.
-    function showQues() {
-      if (gameIsRunning) {
-        clearInterval(countDown);
-        time = 5;
-        isAnswered = false;
-        $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+  //write picked question and respective answer choices to the DOM.
+  function showQues() {
+    if (gameIsRunning) {
+      clearInterval(countDown);
+      time = 5;
+      isAnswered = false;
+      $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
 
-        $("#ques").text(questionsArr[count].Q);
+      $("#ques").text(questionsArr[count].Q);
 
-        $("#A1").text(questionsArr[count].A1);
-        $("#A2").text(questionsArr[count].A2);
-        $("#A3").text(questionsArr[count].A3);
-        $("#A4").text(questionsArr[count].A4);
+      $("#A1").text(questionsArr[count].A1);
+      $("#A2").text(questionsArr[count].A2);
+      $("#A3").text(questionsArr[count].A3);
+      $("#A4").text(questionsArr[count].A4);
 
-        //Countdown that calls the function to show the seconds remaining to answer
-        countDown = setInterval(timeRemaining, 1000 * 1);
+      //Countdown that calls the function to show the seconds remaining to answer
+      countDown = setInterval(timeRemaining, 1000 * 1);
 
-        //A question is displayed for 10 seconds. then the function next question is called to increment the count.
-        quesInterval = setInterval(nextQues, 1000 * 5);
-      }
+      //A question is displayed for 5 seconds. then the function next question is called to increment the count.
+      quesInterval = setInterval(nextQues, 1000 * 5);
     }
+  }
 
-    //to Show the seconds remaining to pick an answer choice
-    function timeRemaining() {
-      if (gameIsRunning && count <= 19) {
-        time--;
-        $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+  //to Show the seconds remaining to pick an answer choice
+  function timeRemaining() {
+    if (gameIsRunning && count <= 19) {
+      time--;
+      $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
 
-        if (time === 0) {
-          clearInterval(countDown);
-          $("#time").text("Time Out:-(");
-        }
-      }
-    }
-
-    //show the next question upto the last question in the array
-    function nextQues() {
-      clearInterval(quesInterval);
-      count++;
-
-      if (count <= 19) {
-        setTimeout(showQues, 1000);
-      } else {
-        gameIsRunning = false;
+      if (time === 0) {
         clearInterval(countDown);
-        $("#time").text("");
-
-        $("#ques").text("");
-
-        $("#A1").text("");
-        $("#A2").text("");
-        $("#A3").text("");
-        $("#A4").text("");
-
-        $(".big").show();
+        $("#time").text("Time Out:-(");
       }
     }
   }
 
+  //show the next question upto the last question in the array
+  function nextQues() {
+    clearInterval(quesInterval);
+    count++;
+
+    if (count <= 19) {
+      setTimeout(showQues, 1000);
+    } else {
+      gameIsRunning = false;
+      clearInterval(countDown);
+      $("#time").text("");
+
+      $("#ques").text("");
+
+      $("#A1").text("");
+      $("#A2").text("");
+      $("#A3").text("");
+      $("#A4").text("");
+
+      $("#play").show();
+    }
+  }
+
+  //When the answer choice is made for the question
   function playTrivia() {
     if (!isAnswered) {
       var ansChosen = $(this).text();
       isAnswered = true;
       clearInterval(countDown);
+      clearInterval(quesInterval);
 
       console.log(ansChosen);
       var x = questionsArr[count].ans;
@@ -309,9 +311,11 @@ $(document).ready(function() {
         if (ansChosen === x) {
           correctAns++;
           $("#correct").text("Correct Answers: " + correctAns);
+          nextQues();
         } else {
           incorrectAns++;
           $("#incorrect").text("Incorrect Answers: " + incorrectAns);
+          nextQues();
         }
       }
       checkAns();
