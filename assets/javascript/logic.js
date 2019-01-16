@@ -209,6 +209,10 @@ var time = 0;
 //variable when set to true, will prevent user from changing answer
 var isAnswered;
 
+var isCorrect;
+
+var resultTimeout;
+
 //variable to count correct answers
 var correctAns = 0;
 
@@ -217,10 +221,10 @@ var incorrectAns = 0;
 
 //When document is ready
 $(document).ready(function() {
-  $("#play").click(timers);
+  $("#play").click(startGame);
   $(".btn").click(playTrivia);
 
-  function timers() {
+  function startGame() {
     //hide play button
     $("#play").hide();
     $("#correct").text("Correct Answers: 0");
@@ -243,6 +247,7 @@ $(document).ready(function() {
       time = 5;
       isAnswered = false;
       $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+      $("#result").text("");
 
       $("#ques").text(questionsArr[count].Q);
 
@@ -278,7 +283,7 @@ $(document).ready(function() {
     count++;
 
     if (count <= 19) {
-      setTimeout(showQues, 1000);
+      showQues();
     } else {
       gameIsRunning = false;
       clearInterval(countDown);
@@ -297,6 +302,7 @@ $(document).ready(function() {
 
   //When the answer choice is made for the question
   function playTrivia() {
+    //If the answer choice is not made yet, get the text of user choice and check it for correctness
     if (!isAnswered) {
       var ansChosen = $(this).text();
       isAnswered = true;
@@ -310,15 +316,39 @@ $(document).ready(function() {
       function checkAns() {
         if (ansChosen === x) {
           correctAns++;
+          isCorrect = true;
           $("#correct").text("Correct Answers: " + correctAns);
-          nextQues();
+          showResult();
         } else {
           incorrectAns++;
+          isCorrect = false;
           $("#incorrect").text("Incorrect Answers: " + incorrectAns);
-          nextQues();
+          showResult();
         }
       }
       checkAns();
+    }
+
+    function showResult() {
+      var resultImage = $("<img>");
+      resultImage.addClass("gif");
+
+      if (isAnswered && isCorrect) {
+        resultImage.attr(
+          "src",
+          "https://media.giphy.com/media/1BeDLYNywynG5iyR3R/giphy.gif"
+        );
+      } else if (isAnswered && !isCorrect) {
+        resultImage.attr(
+          "src",
+          "https://media.giphy.com/media/3qMnJVffOYsow/giphy.gif"
+        );
+      }
+      $("#result").append(resultImage);
+
+      resultTimeout = setTimeout(function() {
+        nextQues();
+      }, 2000);
     }
   }
 });
