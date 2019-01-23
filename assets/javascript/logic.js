@@ -248,6 +248,7 @@ $(document).ready(function() {
       isAnswered = false;
       $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
       $("#result").text("");
+      $(".question").show();
 
       $("#ques").text(questionsArr[count].Q);
 
@@ -269,10 +270,11 @@ $(document).ready(function() {
     if (gameIsRunning && count <= 19) {
       time--;
       $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
-
+      console.log(time);
       if (time === 0) {
-        clearInterval(countDown);
+        console.log("time=0");
         $("#time").text("Time Out:-(");
+        // clearInterval(countDown);
       }
     }
   }
@@ -312,6 +314,7 @@ $(document).ready(function() {
       console.log(ansChosen);
       var x = questionsArr[count].ans;
       console.log(x);
+      checkAns();
 
       function checkAns() {
         if (ansChosen === x) {
@@ -326,7 +329,6 @@ $(document).ready(function() {
           showResult();
         }
       }
-      checkAns();
     }
 
     function showResult() {
@@ -338,17 +340,18 @@ $(document).ready(function() {
           "src",
           "https://media.giphy.com/media/1BeDLYNywynG5iyR3R/giphy.gif"
         );
-      } else if (isAnswered && !isCorrect) {
+      } else if (!isCorrect) {
         resultImage.attr(
           "src",
           "https://media.giphy.com/media/3qMnJVffOYsow/giphy.gif"
         );
       }
+
       $("#result").append(resultImage);
 
-      resultTimeout = setTimeout(function() {
-        nextQues();
-      }, 2000);
+      $(".question").hide();
+
+      resultTimeout = setTimeout(nextQues, 2000);
     }
   }
 });
