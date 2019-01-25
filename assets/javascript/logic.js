@@ -226,6 +226,7 @@ $(document).ready(function() {
 
   function startGame() {
     //hide play button
+    console.log("play clicked");
     $("#play").hide();
     $("#correct").text("Correct Answers: 0");
     $("#incorrect").text("Incorrect Answers: 0");
@@ -234,6 +235,8 @@ $(document).ready(function() {
     correctAns = 0;
     incorrectAns = 0;
     count = 0;
+    isAnswered = false;
+    isCorrect = false;
     gameIsRunning = true;
 
     //Setting the game to run by calling the function which displays the question and answers
@@ -244,10 +247,11 @@ $(document).ready(function() {
   function showQues() {
     if (gameIsRunning) {
       clearInterval(countDown);
-      time = 5;
       isAnswered = false;
+      isCorrect = false;
+      time = 5;
       $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
-      $("#result").text("");
+      $("#result").empty();
       $(".question").show();
 
       $("#ques").text(questionsArr[count].Q);
@@ -274,7 +278,7 @@ $(document).ready(function() {
       if (time === 0) {
         console.log("time=0");
         $("#time").text("Time Out:-(");
-        // clearInterval(countDown);
+        clearInterval(countDown);
       }
     }
   }
@@ -282,12 +286,15 @@ $(document).ready(function() {
   //show the next question upto the last question in the array
   function nextQues() {
     clearInterval(quesInterval);
-    count++;
+    clearInterval(countDown);
 
+    count++;
     if (count <= 19) {
       showQues();
+      console.log("ques# " + count);
     } else {
       gameIsRunning = false;
+      isAnswered = false;
       clearInterval(countDown);
       $("#time").text("");
 
@@ -298,6 +305,15 @@ $(document).ready(function() {
       $("#A3").text("");
       $("#A4").text("");
 
+      $("#result").html(
+        "<h4>Correct Answers: " +
+          correctAns +
+          "</h4>" +
+          "<h4>Incorrect Answers: " +
+          incorrectAns +
+          "</h4>"
+      );
+
       $("#play").show();
     }
   }
@@ -305,6 +321,7 @@ $(document).ready(function() {
   //When the answer choice is made for the question
   function playTrivia() {
     //If the answer choice is not made yet, get the text of user choice and check it for correctness
+    console.log("button clicked");
     if (!isAnswered) {
       var ansChosen = $(this).text();
       isAnswered = true;
@@ -335,7 +352,7 @@ $(document).ready(function() {
       var resultImage = $("<img>");
       resultImage.addClass("gif");
 
-      if (isAnswered && isCorrect) {
+      if (isCorrect) {
         resultImage.attr(
           "src",
           "https://media.giphy.com/media/1BeDLYNywynG5iyR3R/giphy.gif"
@@ -346,11 +363,8 @@ $(document).ready(function() {
           "https://media.giphy.com/media/3qMnJVffOYsow/giphy.gif"
         );
       }
-
       $("#result").append(resultImage);
-
       $(".question").hide();
-
       resultTimeout = setTimeout(nextQues, 2000);
     }
   }
