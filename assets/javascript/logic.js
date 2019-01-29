@@ -354,7 +354,7 @@ $(document).ready(function() {
       if (isCorrect) {
         resultImage.attr(
           "src",
-          "https://media.giphy.com/media/1BeDLYNywynG5iyR3R/giphy.gif"
+          "https://media.giphy.com/media/1BeDLYNywynG5iyR3R/giphy-downsized-medium.gif"
         );
       } else if (!isCorrect) {
         resultImage.attr(
