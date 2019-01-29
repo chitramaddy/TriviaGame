@@ -12,70 +12,61 @@
 </head>
 
 <body>
-	<div>
-		<!--This contains the entire page-->
-		<div class="container-main">
-			<!--This contains the header-->
-			<div class="header"></div>
-			<div class="row heading">
-				<div class="col-xs-11 col-sm-12 col-md-12">
-					<h1>The Big Bang Theory...
-						<small class="text-muted">Trivia!!!</small>
-					</h1>
 
-				</div>
-			</div>
-
-
-			<div><button type="button" id="play">START</button>
-			</div>
-
-			<!--Countdown timer for each question-->
-			<div class="timer">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12">
-						<h3 id="time">Time Remaining: 5 seconds</h3>
-					</div>
-				</div>
-			</div>
-			<div id="result"></div>
-			<!--Displays single question-->
-			<div class="question">
-				<div class="row" id="ques">
-					<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12"></div>
-				</div>
-
-				<!--Displays multiple answer choices-->
-				<div>
-					<div class="row" id="choices">
-						<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12">
-							<!--Buttons for answer choices-->
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A1"></button>
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A2"></button>
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A3"></button>
-							<button type="button" class="btn btn-warning btn-lg btn-block" id="A4"></button>
-						</div>
-					</div>
-
-				</div>
+	<!--This contains the entire page-->
+	<div class="container-main">
+		<!--This contains the header-->
+		<div class="header"></div>
+		<div class="row heading">
+			<div class="col-xs-11 col-sm-12 col-md-12">
+				<h1>The Big Bang Theory...
+					<small class="text-muted">Trivia!!!</small>
+				</h1>
 
 			</div>
+		</div>
 
-			<footer>
-				<div class="row stats">
-					<div class="col-md-6 col-sm-6 col-xs-6" id="correct"><b>Correct Answers: </b></div>
-					<div class="col-md-6 col-sm-6 col-xs-6" id="incorrect"><b>Incorrect Answers: </b></div>
+
+		<div><button type="button" id="play">START</button>
+		</div>
+
+		<!--Countdown timer for each question-->
+		<div class="timer">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<h3 id="time">Time Remaining: 5 seconds</h3>
 				</div>
-			</footer>
+			</div>
+		</div>
+		<div id="result"></div>
+		<!--Displays single question-->
+		<div class="question">
+			<div class="row" id="ques">
+				<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12"></div>
+			</div>
 
+			<!--Displays multiple answer choices-->
+
+			<div class="row" id="choices">
+				<div class="col-md-8 offset-md-2 col-sm-8 col-xs-12">
+					<!--Buttons for answer choices-->
+					<button type="button" class="btn btn-warning btn-lg btn-block" id="A1"></button>
+					<button type="button" class="btn btn-warning btn-lg btn-block" id="A2"></button>
+					<button type="button" class="btn btn-warning btn-lg btn-block" id="A3"></button>
+					<button type="button" class="btn btn-warning btn-lg btn-block" id="A4"></button>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="row stats">
+				<div class="col-md-6 col-sm-6 col-xs-6" id="correct"><b>Correct Answers: </b></div>
+				<div class="col-md-6 col-sm-6 col-xs-6" id="incorrect"><b>Incorrect Answers: </b></div>
+			</div>
 		</div>
 
 	</div>
-	</div>
 
-
-	</div>
-	</div>
 
 	<!--JQuery-->
 

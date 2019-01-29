@@ -10,11 +10,12 @@ body {
 }
 
 .container-main {
-    max-width: 980px;
-    height: 100vh;
+    width: 980px;
+    height: 723px;
     margin: auto;
     border: solid 1px orange;
     background-color: mediumblue;
+
 
 }
 
@@ -43,12 +44,16 @@ body {
     color: white;
 }
 
-footer {
-    margin: 30px 0 0 0;
+#footer {
+    position: fixed;
+    margin: auto;
+    bottom: 0px;
+    width: 977px;
     padding: 20px;
     background-color: midnightblue;
     font-style: oblique;
     color: white;
+
 }
 
 #ques {
@@ -63,7 +68,7 @@ footer {
 }
 
 #choices {
-    margin-bottom: 130px;
+    margin-bottom: 100px;
 }
 
 #checkAns,

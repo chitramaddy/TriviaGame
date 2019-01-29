@@ -321,16 +321,13 @@ $(document).ready(function() {
   //When the answer choice is made for the question
   function playTrivia() {
     //If the answer choice is not made yet, get the text of user choice and check it for correctness
-    console.log("button clicked");
     if (!isAnswered) {
       var ansChosen = $(this).text();
       isAnswered = true;
       clearInterval(countDown);
       clearInterval(quesInterval);
 
-      console.log(ansChosen);
       var x = questionsArr[count].ans;
-      console.log(x);
       checkAns();
 
       function checkAns() {
@@ -346,6 +343,8 @@ $(document).ready(function() {
           showResult();
         }
       }
+    } else {
+      showResult();
     }
 
     function showResult() {
@@ -361,6 +360,11 @@ $(document).ready(function() {
         resultImage.attr(
           "src",
           "https://media.giphy.com/media/3qMnJVffOYsow/giphy.gif"
+        );
+      } else if (!isAnswered) {
+        resultImage.attr(
+          "src",
+          "https://media.giphy.com/media/W0SLa0YuzWBZ6/giphy.gif"
         );
       }
       $("#result").append(resultImage);
