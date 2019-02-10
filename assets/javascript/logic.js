@@ -190,7 +190,7 @@ var questionsArr = [
 ];
 
 //var for incrementing question number
-var count = 0;
+var questionNumber = 0;
 
 //var for storing player answer
 var ansChosen = "";
@@ -234,7 +234,7 @@ $(document).ready(function() {
     //when play is clicked: rewrite stats, pick a question, set game running to true
     correctAns = 0;
     incorrectAns = 0;
-    count = 0;
+    questionNumber = 0;
     isAnswered = false;
     isCorrect = false;
     gameIsRunning = true;
@@ -254,12 +254,12 @@ $(document).ready(function() {
       $("#result").empty();
       $(".question").show();
 
-      $("#ques").text(questionsArr[count].Q);
+      $("#ques").text(questionsArr[questionNumber].Q);
 
-      $("#A1").text(questionsArr[count].A1);
-      $("#A2").text(questionsArr[count].A2);
-      $("#A3").text(questionsArr[count].A3);
-      $("#A4").text(questionsArr[count].A4);
+      $("#A1").text(questionsArr[questionNumber].A1);
+      $("#A2").text(questionsArr[questionNumber].A2);
+      $("#A3").text(questionsArr[questionNumber].A3);
+      $("#A4").text(questionsArr[questionNumber].A4);
 
       //Countdown that calls the function to show the seconds remaining to answer
       countDown = setInterval(timeRemaining, 1000 * 1);
@@ -271,7 +271,7 @@ $(document).ready(function() {
 
   //to Show the seconds remaining to pick an answer choice
   function timeRemaining() {
-    if (gameIsRunning && count <= 19) {
+    if (gameIsRunning && questionNumber <= 19) {
       time--;
       $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
       console.log(time);
@@ -288,10 +288,10 @@ $(document).ready(function() {
     clearInterval(quesInterval);
     clearInterval(countDown);
 
-    count++;
-    if (count <= 19) {
+    questionNumber++;
+    if (questionNumber <= 19) {
       showQues();
-      console.log("ques# " + count);
+      console.log("ques# " + questionNumber);
     } else {
       gameIsRunning = false;
       isAnswered = false;
@@ -327,7 +327,7 @@ $(document).ready(function() {
       clearInterval(countDown);
       clearInterval(quesInterval);
 
-      var x = questionsArr[count].ans;
+      var x = questionsArr[questionNumber].ans;
       checkAns();
 
       function checkAns() {
