@@ -269,7 +269,7 @@ $(document).ready(function() {
       countDown = setInterval(timeRemaining, 1000 * 1);
 
       //A question is displayed for 5 seconds. then the function next question is called to increment the count.
-      quesInterval = setInterval(nextQues, 1000 * 5);
+      quesInterval = setInterval(nextQues, 1000 * 6);
     }
   }
 
