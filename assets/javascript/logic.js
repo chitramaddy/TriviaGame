@@ -223,10 +223,10 @@ var incorrectAns = 0;
 $(document).ready(function() {
   $("#play").click(startGame);
   $(".btn").click(playTrivia);
+  $("#time").hide();
 
   function startGame() {
-    //hide play button
-    console.log("play clicked");
+    $("#time").show();
     $("#play").hide();
     $("#correct").text("Correct Answers: 0");
     $("#incorrect").text("Incorrect Answers: 0");
@@ -250,8 +250,12 @@ $(document).ready(function() {
       isAnswered = false;
       isCorrect = false;
       time = 5;
-      $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+
       $("#result").empty();
+
+      $("#time").show();
+      $("#time").html("<h3>Time Remaining: " + time + " seconds</h3>");
+
       $(".question").show();
 
       $("#ques").text(questionsArr[questionNumber].Q);
@@ -296,7 +300,7 @@ $(document).ready(function() {
       gameIsRunning = false;
       isAnswered = false;
       clearInterval(countDown);
-      $("#time").text("");
+      $("#time").hide();
 
       $("#ques").text("");
 
@@ -369,6 +373,7 @@ $(document).ready(function() {
       }
       $("#result").append(resultImage);
       $(".question").hide();
+      $("#time").hide();
       resultTimeout = setTimeout(nextQues, 2000);
     }
   }
