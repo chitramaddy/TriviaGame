@@ -205,6 +205,7 @@ var resultTimeout;
 var correctAnswer = 0;
 var incorrectAnswer = 0;
 
+
 $(document).ready(function() {
   $("#play").click(startGame);
   $(".btn").click(playTrivia);
